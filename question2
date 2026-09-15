@@ -1,0 +1,38 @@
+using System;
+
+class question2
+{
+    // Custom delegate
+    delegate void StudentDelegate(string name, int marks);
+
+    // Method 1: Display student details
+    static void DisplayDetails(string name, int marks)
+    {
+        Console.WriteLine("Student Name: " + name);
+        Console.WriteLine("Marks: " + marks);
+    }
+
+    // Method 2: Determine pass or fail
+    static void CheckResult(string name, int marks)
+    {
+        if (marks >= 40)
+        {
+            Console.WriteLine(name + " has Passed.");
+        }
+        else
+        {
+            Console.WriteLine(name + " has Failed.");
+        }
+    }
+
+    static void Main4()
+    {
+        // Create delegate objects
+        StudentDelegate display = DisplayDetails;
+        StudentDelegate result = CheckResult;
+
+        // Call methods through delegates
+        display("Muskan", 75);
+        result("Muskan", 75);
+    }
+}

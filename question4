@@ -1,0 +1,54 @@
+using System;
+
+class question4
+{
+    // Custom delegate that returns an integer
+    delegate int CalculatorDelegate(int a, int b);
+
+    // Addition
+    static int Addition(int a, int b)
+    {
+        return a + b;
+    }
+
+    // Subtraction
+    static int Subtraction(int a, int b)
+    {
+        return a - b;
+    }
+
+    // Multiplication
+    static int Multiplication(int a, int b)
+    {
+        return a * b;
+    }
+
+    // Division
+    static int Division(int a, int b)
+    {
+        return a / b;
+    }
+
+    static void Main6()
+    {
+        // Create multicast delegate
+        CalculatorDelegate calc = Addition;
+
+        calc += Subtraction;
+        calc += Multiplication;
+        calc += Division;
+
+        // Get all methods attached to delegate
+        Delegate[] methods = calc.GetInvocationList();
+
+        // Execute each method separately
+        foreach (CalculatorDelegate method in methods)
+        {
+            int result = method(20, 5);
+
+            Console.WriteLine(
+                method.Method.Name + " = " + result
+            );
+        }
+    }
+}

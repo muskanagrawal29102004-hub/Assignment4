@@ -1,0 +1,23 @@
+using System;
+
+class question1
+{
+    // 1. Create a custom delegate
+    delegate void SumDelegate(int a, int b);
+
+    // 2. Method that calculates and displays the sum
+    static void CalculateSum(int a, int b)
+    {
+        int sum = a + b;
+        Console.WriteLine("Sum = " + sum);
+    }
+
+    static void Main3()
+    {
+        // 3. Create delegate object and assign method
+        SumDelegate del = CalculateSum;
+
+        // 4. Call method through delegate
+        del(10, 20);
+    }
+}

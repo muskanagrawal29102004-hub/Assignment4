@@ -1,0 +1,34 @@
+using System;
+
+class question5
+{
+    // Custom delegate
+    delegate void TemperatureDelegate(double celsius);
+
+    // Celsius to Fahrenheit
+    static void CelsiusToFahrenheit(double celsius)
+    {
+        double fahrenheit = (celsius * 9 / 5) + 32;
+
+        Console.WriteLine("Fahrenheit = " + fahrenheit);
+    }
+
+    // Celsius to Kelvin
+    static void CelsiusToKelvin(double celsius)
+    {
+        double kelvin = celsius + 273.15;
+
+        Console.WriteLine("Kelvin = " + kelvin);
+    }
+
+    static void Main()
+    {
+        // Create multicast delegate
+        TemperatureDelegate temp = CelsiusToFahrenheit;
+
+        temp += CelsiusToKelvin;
+
+        // Call both methods
+        temp(25);
+    }
+}
